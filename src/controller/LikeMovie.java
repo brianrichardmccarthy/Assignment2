@@ -55,13 +55,9 @@ public class LikeMovie implements LikeMovieAPI {
 	 * @throws IOException
 	 */
 	public void prime() throws ClassNotFoundException, FileNotFoundException, IOException {
-		if (serializer.isFile())
-			serializer.read();
-		else {
-			init("./data/users.dat");
-			init("./data/items.dat");
-			init("./data/ratings.dat");
-		}
+		init("./data/users.dat");
+		init("./data/items.dat");
+		init("./data/ratings.dat");
 	}
 
 	@Override
@@ -223,8 +219,8 @@ public class LikeMovie implements LikeMovieAPI {
 			// parse user details string
 			String[] userTokens = userDetails.split(delims);
 
-			// userTokens length is 4, then it's a rating class, 
-			// else if its length is 7 it's a user class, 
+			// userTokens length is 4, then it's a rating class,
+			// else if its length is 7 it's a user class,
 			// else its a movie class if its length is 23
 			if (userTokens.length == 4)
 				addRate(Integer.parseInt(userTokens[0]), Integer.parseInt(userTokens[1]),
