@@ -2,9 +2,11 @@ package controller;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +21,7 @@ public class LikeMovieTest {
 
 	@Before
 	public void setup() {
-		likeMovieAPI = new LikeMovie();
+		likeMovieAPI = new LikeMovie("./Data/test.xml");
 	}
 
 	/**
@@ -140,7 +142,7 @@ public class LikeMovieTest {
 	@Test
 	public void testIO() throws ClassNotFoundException, IOException {
 		addValues();
-		LikeMovieAPI one = new LikeMovie();
+		LikeMovieAPI one = new LikeMovie("./Data/test.xml");
 		likeMovieAPI.write();
 		one.load();
 
@@ -185,5 +187,16 @@ public class LikeMovieTest {
 		likeMovieAPI.addRate(4, 2, 3);
 		likeMovieAPI.addRate(4, 3, 0);
 		likeMovieAPI.addRate(4, 6, 5);
+	}
+	
+	/**
+	 * Remove the test file.
+	 */
+	@After
+	public void tearDown() {
+		File f= new File("./Data/test.xml");
+		if (f.exists())
+			f.delete();
+			
 	}
 }

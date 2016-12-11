@@ -26,9 +26,9 @@ public class Serializer implements SerializerAPI {
 	private String file;
 	private Stack stack;
 
-	public Serializer() {
+	public Serializer(String file) {
 		stack = new Stack();
-		setFile("./data/data.xml");
+		setFile(file);
 	}
 
 	/**

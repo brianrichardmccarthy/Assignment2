@@ -37,12 +37,12 @@ public class LikeMovie implements LikeMovieAPI {
 	/**
 	 * Constructor.
 	 */
-	public LikeMovie() {
+	public LikeMovie(String file) {
 		this.movieId = 1;
 		this.userId = 1;
 		users = new HashMap<Integer, User>();
 		movies = new HashMap<Integer, Movie>();
-		serializer = new Serializer();
+		serializer = new Serializer(file);
 		ratings = new ArrayList<Rate>();
 	}
 
@@ -55,9 +55,13 @@ public class LikeMovie implements LikeMovieAPI {
 	 * @throws IOException
 	 */
 	public void prime() throws ClassNotFoundException, FileNotFoundException, IOException {
-		init("./data/users.dat");
-		init("./data/items.dat");
-		init("./data/ratings.dat");
+		if (serializer.isFile()) {
+			load();
+		} else {
+			init("./data/users.dat");
+			init("./data/items.dat");
+			init("./data/ratings.dat");
+		}
 	}
 
 	@Override

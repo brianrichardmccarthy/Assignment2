@@ -27,7 +27,7 @@ public class SerializerTest {
 	@Test
 	public void testStack() {
 
-		SerializerAPI serializer = new Serializer();
+		SerializerAPI serializer = new Serializer("./Data/test.xml");
 
 		ArrayList<Double> temp = new ArrayList<Double>();
 		temp.add(2.2);
@@ -60,7 +60,7 @@ public class SerializerTest {
 	@Test
 	public void testIO() {
 
-		Serializer serializer = new Serializer();
+		Serializer serializer = new Serializer("./Data/test.xml");
 
 		ArrayList<Double> temp = new ArrayList<Double>();
 		temp.add(2.2);
@@ -103,7 +103,14 @@ public class SerializerTest {
 	 */
 	@Test
 	public void testIsFile() {
-		Serializer serializer = new Serializer();
+		Serializer serializer = new Serializer("./Data/test.xml");
+		serializer.push("Hello World");
+		try {
+			serializer.write();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// test that ./Data/data.xml is a file
 		assertTrue(serializer.isFile());
 		

@@ -30,7 +30,7 @@ public class Main {
 	 * @throws IOException
 	 */
 	public Main() throws ClassNotFoundException, FileNotFoundException, IOException {
-		likeMovieAPI = new LikeMovie();
+		likeMovieAPI = new LikeMovie("./Data/data.xml");
 		likeMovieAPI.prime();
 	}
 
